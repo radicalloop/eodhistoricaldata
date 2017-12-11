@@ -54,14 +54,35 @@ Here you can see an example of just how simple this package is to use.
 
 ### Stocks API
 ```php
+$stock = Eod::stock();
+
 // JSON 
-$stock = Eod::realTime('AAPL.US')->json();
+$stock->realTime('AAPL.US')->json();
 
 // CSV 
-$stock = Eod::realTime('AAPL.US')->csv();
+$stock->realTime('AAPL.US')->csv();
 
-// Save CSV at specific path
-$stock = Eod::realTime('AAPL.US')->save('path/to/save/csv/stock.csv');
+// Save CSV to specific path
+$stock->realTime('AAPL.US')->save('path/to/save/csv/stock.csv');
 ```
+To check other Stock API usages, refer [Test Cases](tests/StockTest.php) here.
+
+### Exchanges API
+```php
+$exchange = Eod::exchange();
+
+// JSON 
+$exchange->symbol('US')->json();
+$exchange->multipleTicker('US')->json();
+
+// CSV 
+$exchange->symbol('US')->csv();
+$exchange->multipleTicker('US')->csv();
+
+// Save CSV to specific path
+$exchange->symbol('US')->save('path/to/save/csv/stock.csv');
+```
+To check other Exchanges API usages, refer [Test Cases](tests/ExchangeTest.php) here.
+
 
 
