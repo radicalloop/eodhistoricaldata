@@ -94,6 +94,9 @@ To check other Exchanges API usages, refer [Test Cases](tests/ExchangeTest.php) 
 For PHP you can create an object like below.
 
 ```php
+use RadicalLoop\Eod\Config;
+use RadicalLoop\Eod\Eod;
+
 $stock    = (new Eod(new Config($apiToken)))->stock();
 $exchange = (new Eod(new Config($apiToken)))->exchange();
 ```
