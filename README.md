@@ -1,6 +1,9 @@
 # EOD Historical Data API Client Wrapper for Laravel/PHP
 
 [![Build Status](https://travis-ci.org/radicalloop/eodhistoricaldata.svg?branch=master)](https://travis-ci.org/radicalloop/eodhistoricaldata)
+[![Latest Stable Version](https://poser.pugx.org/radicalloop/eodhistoricaldata/v/stable)](https://packagist.org/packages/radicalloop/eodhistoricaldata)
+[![Total Downloads](https://poser.pugx.org/radicalloop/eodhistoricaldata/downloads)](https://packagist.org/packages/radicalloop/eodhistoricaldata)
+[![License](https://poser.pugx.org/radicalloop/eodhistoricaldata/license)](https://packagist.org/packages/radicalloop/eodhistoricaldata)
 
 ## Installation
 To install this package via the `composer require` command:
@@ -61,9 +64,9 @@ $stock = Eod::stock();
 $stock->realTime('AAPL.US')->json();
 $stock->eod('AAPL.US')->json();
 
-// CSV 
-$stock->realTime('AAPL.US')->csv();
-$stock->eod('AAPL.US')->csv();
+// Download CSV 
+$stock->realTime('AAPL.US')->download();
+$stock->eod('AAPL.US')->download();
 
 // Save CSV to specific path
 $stock->realTime('AAPL.US')->save('path/to/save/csv/stock.csv');
@@ -81,9 +84,9 @@ $exchange = Eod::exchange();
 $exchange->symbol('US')->json();
 $exchange->multipleTicker('US')->json();
 
-// CSV 
-$exchange->symbol('US')->csv();
-$exchange->multipleTicker('US')->csv();
+// Download CSV 
+$exchange->symbol('US')->download();
+$exchange->multipleTicker('US')->download();
 
 // Save CSV to specific path
 $exchange->symbol('US')->save('path/to/save/csv/stock.csv');
