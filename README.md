@@ -15,6 +15,7 @@ Or add it to `composer.json` manually:
     "radicalloop/eodhistoricaldata": "~1.0"
 }
 ```
+## Laravel
 No configuration required for Laravel >= 5.5+, It will use the auto-discovery function.
 
 In Laravel <= 5.4 (or if you are not using auto-discovery) register the service provider by adding it to the `providers` key in `config/app.php`. Also register the facade by adding it to the `aliases` key in `config/app.php`.
@@ -58,12 +59,17 @@ $stock = Eod::stock();
 
 // JSON 
 $stock->realTime('AAPL.US')->json();
+$stock->eod('AAPL.US')->json();
 
 // CSV 
 $stock->realTime('AAPL.US')->csv();
+$stock->eod('AAPL.US')->csv();
 
 // Save CSV to specific path
 $stock->realTime('AAPL.US')->save('path/to/save/csv/stock.csv');
+
+// For other parameters, for ex. dividend api with other params
+$stock->div('AAPL.US', ['from' => '2017-01-01'])->json();
 ```
 To check other Stock API usages, refer [Test Cases](tests/StockTest.php) here.
 
