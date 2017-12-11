@@ -90,5 +90,15 @@ $exchange->symbol('US')->save('path/to/save/csv/stock.csv');
 ```
 To check other Exchanges API usages, refer [Test Cases](tests/ExchangeTest.php) here.
 
+## PHP
+For PHP you can create an object like below.
+
+```php
+$stock    = (new Eod(new Config($apiToken)))->stock();
+$exchange = (new Eod(new Config($apiToken)))->exchange();
+```
+
+## Support
+Contact: [www.radicalloop.com](https://www.radicalloop.com) — hello@radicalloop.com
 
 
