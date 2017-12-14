@@ -58,6 +58,8 @@ Here you can see an example of just how simple this package is to use.
 
 ### Stocks API
 ```php
+use Eod;
+
 $stock = Eod::stock();
 
 // JSON 
@@ -65,7 +67,7 @@ $stock->realTime('AAPL.US')->json();
 $stock->eod('AAPL.US')->json();
 
 // Download CSV 
-$stock->realTime('AAPL.US')->download();
+$stock->realTime('AAPL.US' ['s' => ['VTI','EUR','FX']])->download();
 $stock->eod('AAPL.US')->download();
 
 // Save CSV to specific path
@@ -78,6 +80,8 @@ To check other Stock API usages, refer [Test Cases](tests/StockTest.php) here.
 
 ### Exchanges API
 ```php
+use Eod;
+
 $exchange = Eod::exchange();
 
 // JSON 
