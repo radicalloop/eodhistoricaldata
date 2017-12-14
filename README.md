@@ -72,7 +72,7 @@ $stock->eod('AAPL.US')->download();
 $stock->realTime('AAPL.US')->save('path/to/save/csv/stock.csv');
 
 // For other parameters, for ex. dividend api with other params
-$stock->div('AAPL.US', ['from' => '2017-01-01'])->json();
+$stock->dividend('AAPL.US', ['from' => '2017-01-01'])->json();
 ```
 To check other Stock API usages, refer [Test Cases](tests/StockTest.php) here.
 
