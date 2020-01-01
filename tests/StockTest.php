@@ -7,7 +7,7 @@ class StockTest extends TestCase
 {
     protected $stock;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
         $apiToken = getenv('API_TOKEN');
