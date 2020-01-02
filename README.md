@@ -12,6 +12,7 @@ To install this package via the `composer require` command:
 $ composer require radicalloop/eodhistoricaldata
 ```
 Or add it to `composer.json` manually:
+
 For laravel 5, use "~1.0"
 
 ```json
