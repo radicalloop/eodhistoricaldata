@@ -9,7 +9,7 @@ class ExchangeTest extends TestCase
     protected $exchange;   //comment
     private $root;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
         $this->root = vfsStream::setup('storage');
@@ -30,16 +30,17 @@ class ExchangeTest extends TestCase
         $content = $this->exchange->symbol('US')->json();
         $data = json_decode($content, true);
 
-        $this->assertInternalType('array', $data);
+        $this->assertTrue(is_array($data));
         $this->assertNotEmpty($data);
 
-        $this->assertCount(5, $data[0]);
+        $this->assertCount(6, $data[0]);
 
         $this->assertArrayHasKey('Code', $data[0]);
         $this->assertArrayHasKey('Name', $data[0]);
         $this->assertArrayHasKey('Country', $data[0]);
         $this->assertArrayHasKey('Exchange', $data[0]);
         $this->assertArrayHasKey('Currency', $data[0]);
+        $this->assertArrayHasKey('Type', $data[0]);
     }
 
     /** @test **/
@@ -48,7 +49,7 @@ class ExchangeTest extends TestCase
         $content = $this->exchange->multipleTicker('US')->json();
         $data = json_decode($content, true);
 
-        $this->assertInternalType('array', $data);
+        $this->assertTrue(is_array($data));
         $this->assertNotEmpty($data);
 
         $this->assertCount(9, $data[0]);

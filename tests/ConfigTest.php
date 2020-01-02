@@ -6,7 +6,7 @@ class ConfigTest extends TestCase
 {
     protected $config;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
         $this->config = new Config('apitoken');
