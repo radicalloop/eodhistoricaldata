@@ -89,6 +89,7 @@ $exchange = Eod::exchange();
 // JSON 
 $exchange->symbol('US')->json();
 $exchange->multipleTicker('US')->json();
+$exchange->details('US')->json();
 
 // Download CSV 
 $exchange->symbol('US')->download();
