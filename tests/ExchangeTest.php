@@ -75,4 +75,14 @@ class ExchangeTest extends TestCase
         $content = $this->root->getChild('test.csv')->getContent();
         $this->assertNotEmpty($content);
     }
+    
+     /** @test **/
+     public function details()
+     {
+         $content = $this->exchange->details('US')->json();
+         $data = json_decode($content, true);
+ 
+         $this->assertTrue(is_array($data));
+         $this->assertNotEmpty($data);
+     }
 }
