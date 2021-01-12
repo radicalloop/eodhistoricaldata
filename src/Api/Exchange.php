@@ -40,4 +40,18 @@ class Exchange extends EodClient
         $this->setParams($symbol, $params);
         return $this;
     }
+    
+     /**
+     * Get exchange details api
+     * url: https://eodhistoricaldata.com/financial-apis/exchanges-api-trading-hours-and-holidays/
+     * @param string $symbol
+     * @param array $params
+     * @return Exchange
+     */
+    public function details($symbol, $params = [])
+    {
+        $this->urlSegment = '/exchange-details';
+        $this->setParams($symbol, $params);
+        return $this;
+    }
 }
