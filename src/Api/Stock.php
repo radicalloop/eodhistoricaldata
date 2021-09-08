@@ -79,6 +79,20 @@ class Stock extends EodClient
     }
 
     /**
+    * Technical Indicator API
+    * url: https://eodhistoricaldata.com/financial-apis/technical-indicators-api/
+    * @param string $symbol
+    * @param array $params
+    * @return Stock
+    */
+    public function technical($symbol, $params = [])
+    {
+        $this->urlSegment = '/technical';
+        $this->setParams($symbol, $params);
+        return $this;
+    }
+
+    /**
     * Yahoo Finance API Support
     * url: https://eodhistoricaldata.com/knowledgebase/api-for-historical-data-and-volumes/
     * @param string $symbol
