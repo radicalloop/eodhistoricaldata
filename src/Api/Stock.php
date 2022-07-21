@@ -106,4 +106,18 @@ class Stock extends EodClient
         $this->setParams(null, $params);
         return $this;
     }
+
+    /**
+     * Search API for Stocks, ETFs, Mutual Funds and Indices
+     * url: https://eodhistoricaldata.com/financial-apis/search-api-for-stocks-etfs-mutual-funds-and-indices/
+     * @param string $symbol
+     * @param array $params
+     * @return Stock
+     */
+    public function search($symbol, $params = [])
+    {
+        $this->urlSegment = '/search';
+        $this->setParams($symbol, $params);
+        return $this;
+    }
 }

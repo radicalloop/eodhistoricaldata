@@ -49,4 +49,17 @@ class StockTest extends TestCase
         $content = $this->stock->yahoo('AAPL.US')->json();
         $this->assertNotEmpty($content);
     }
+
+    public function test_search_api()
+    {
+        $content = $this->stock->search('AAPL.US')->json();
+        $this->assertNotEmpty($content);
+    }
+
+    public function test_search_api_filters_exchange()
+    {
+
+        $content = $this->stock->search('AAPL.US', ['exchange'=>'NASDAQ'])->json();
+        $this->assertNotEmpty($content);
+    }
 }
