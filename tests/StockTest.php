@@ -2,6 +2,7 @@
 use PHPUnit\Framework\TestCase;
 use RadicalLoop\Eod\Config;
 use RadicalLoop\Eod\Eod;
+use Dotenv\Dotenv;
 
 class StockTest extends TestCase
 {
@@ -10,7 +11,9 @@ class StockTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $apiToken = getenv('API_TOKEN');
+        $dotenv = Dotenv::createImmutable(__DIR__ . '/..');
+        $dotenv->load();
+        $apiToken = $_ENV['API_TOKEN'];
         $this->stock = (new Eod(new Config($apiToken)))->stock();
     }
 

@@ -1,4 +1,6 @@
 <?php
+
+use Dotenv\Dotenv;
 use PHPUnit\Framework\TestCase;
 use RadicalLoop\Eod\Config;
 use RadicalLoop\Eod\Eod;
@@ -7,13 +9,14 @@ use org\bovigo\vfs\vfsStream;
 class ExchangeTest extends TestCase
 {
     protected $exchange;   //comment
-    private $root;
+
 
     protected function setUp(): void
     {
         parent::setUp();
-        $this->root = vfsStream::setup('storage');
-        $apiToken = getenv('API_TOKEN');
+        $dotenv = Dotenv::createImmutable(__DIR__ . '/..');
+        $dotenv->load();
+        $apiToken = $_ENV['API_TOKEN'];
         $this->exchange = (new Eod(new Config($apiToken)))->exchange();
     }
 
@@ -30,10 +33,9 @@ class ExchangeTest extends TestCase
         $content = $this->exchange->symbol('US')->json();
         $data = json_decode($content, true);
 
-        $this->assertTrue(is_array($data));
-        $this->assertNotEmpty($data);
+        $this->assertIsArray($data);
 
-        $this->assertCount(6, $data[0]);
+        $this->assertCount(7, $data[0]);
 
         $this->assertArrayHasKey('Code', $data[0]);
         $this->assertArrayHasKey('Name', $data[0]);
@@ -41,6 +43,8 @@ class ExchangeTest extends TestCase
         $this->assertArrayHasKey('Exchange', $data[0]);
         $this->assertArrayHasKey('Currency', $data[0]);
         $this->assertArrayHasKey('Type', $data[0]);
+        $this->assertArrayHasKey('Isin', $data[0]);
+
     }
 
     /** @test **/
@@ -75,14 +79,34 @@ class ExchangeTest extends TestCase
         $content = $this->root->getChild('test.csv')->getContent();
         $this->assertNotEmpty($content);
     }
-    
+
      /** @test **/
      public function details()
      {
          $content = $this->exchange->details('US')->json();
          $data = json_decode($content, true);
- 
+
          $this->assertTrue(is_array($data));
          $this->assertNotEmpty($data);
      }
+
+    /** @test **/
+    public function it_lists_exchanges()
+    {
+        $content = $this->exchange->list('LSE')->json();
+        $data = json_decode($content, true);
+
+        $this->assertIsArray($data);
+        $this->assertNotEmpty($data);
+    }
+
+    /** @test **/
+    public function it_lists_delisted_exchanges()
+    {
+        $content = $this->exchange->delisted('LSE')->json();
+        $data = json_decode($content, true);
+
+        $this->assertIsArray($data);
+        $this->assertNotEmpty($data);
+    }
 }
