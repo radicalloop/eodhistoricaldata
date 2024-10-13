@@ -2,6 +2,7 @@
 
 namespace RadicalLoop\Eod\Api;
 
+use GuzzleHttp\Exception\GuzzleException;
 use RadicalLoop\Eod\Config;
 use GuzzleHttp\Client as GuzzleHttpClient;
 
@@ -45,9 +46,9 @@ abstract class EodClient
     /**
      * get api uri
      *
-     * @return void
+     * @return string
      */
-    public function getApiUri()
+    public function getApiUri(): string
     {
         return rtrim($this->config->getApiUrl(), '/') . $this->urlSegment;
     }
@@ -55,11 +56,12 @@ abstract class EodClient
     /**
      * send request for api
      *
-     * @param string $symbol
-     * @param array $params
+     * @param  string  $symbol
+     * @param  array  $params
      * @return string|json
+     * @throws GuzzleException
      */
-    public function get($symbol, $params = [])
+    public function get(string $symbol, array $params = [])
     {
         $segment = $symbol ? ('/' . $symbol) : '';
         $httpQuery = http_build_query(array_merge($params, ['api_token' => $this->config->getApiToken()]));
