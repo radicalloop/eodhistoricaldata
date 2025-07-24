@@ -2,6 +2,7 @@
 
 namespace RadicalLoop\Eod;
 
+use RadicalLoop\Eod\Api\Calendar;
 use RadicalLoop\Eod\Api\Exchange;
 use RadicalLoop\Eod\Api\Stock;
 
@@ -39,6 +40,9 @@ class Eod
                 break;
             case 'stock':
                 $api = new Stock($this->config);
+                break;
+            case 'calendar':
+                $api = new Calendar($this->config);
                 break;
             default:
                 throw new \InvalidArgumentException(
