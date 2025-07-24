@@ -61,7 +61,7 @@ abstract class EodClient
      * @return string|json
      * @throws GuzzleException
      */
-    public function get(string $symbol, array $params = [])
+    public function get(string|null $symbol, array $params = [])
     {
         $segment = $symbol ? ('/' . $symbol) : '';
         $httpQuery = http_build_query(array_merge($params, ['api_token' => $this->config->getApiToken()]));
