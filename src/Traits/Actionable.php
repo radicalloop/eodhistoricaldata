@@ -34,7 +34,7 @@ trait Actionable
      * make call to api
      *
      * @param string $dataType
-     * @return string|json
+     * @return string
      */
     public function getData($dataType = self::DATA_TYPE_JSON)
     {
@@ -45,7 +45,7 @@ trait Actionable
     /**
      * return json data
      *
-     * @return json
+     * @return string
      */
     public function json()
     {
