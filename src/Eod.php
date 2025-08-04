@@ -3,6 +3,7 @@
 namespace RadicalLoop\Eod;
 
 use RadicalLoop\Eod\Api\Calendar;
+use RadicalLoop\Eod\Api\EodClient;
 use RadicalLoop\Eod\Api\Exchange;
 use RadicalLoop\Eod\Api\Stock;
 
