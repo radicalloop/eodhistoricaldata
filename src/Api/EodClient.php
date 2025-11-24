@@ -14,14 +14,14 @@ abstract class EodClient
     /**
      * configuration
      *
-     * @var RadicalLoop\Eod\Config
+     * @var Config
      */
     protected $config;
 
     /**
      * GuzzleHttp client
      *
-     * @var GuzzleHttp\Client
+     * @var GuzzleHttpClient
      */
     protected $client;
 
@@ -56,9 +56,9 @@ abstract class EodClient
     /**
      * send request for api
      *
-     * @param  string  $symbol
-     * @param  array  $params
-     * @return string|json
+     * @param string|null $symbol
+     * @param array $params
+     * @return string
      * @throws GuzzleException
      */
     public function get(string|null $symbol, array $params = [])

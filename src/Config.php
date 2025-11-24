@@ -42,7 +42,7 @@ class Config
      * set api key
      *
      * @param string $apiToken
-     * @return string
+     * @return void
      */
     public function setApiToken($apiToken)
     {
